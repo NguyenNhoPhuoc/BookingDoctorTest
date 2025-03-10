@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+.active hr {
+  @apply block;
+}
+.bg-primary {
+  background-color: #6366f1; /* Xanh dương */
+}
