@@ -6,7 +6,6 @@ const SpecialityMenu = () => {
   useEffect(() => {
     if (specialityData) {
       const specialities = specialityData.map((item) => item.speciality);
-      console.log(specialities);
     } else {
       console.log('specialityData is empty');
     }

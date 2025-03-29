@@ -1,5 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
 import About from './pages/About'
 import Appointment from './pages/AppointMent'
 import Contact from './pages/Contact'
@@ -8,13 +11,11 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import MyAppointments from './pages/MyAppointments'
 import MyProfile from './pages/MyProfile'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-
 
 const App = () => {
   return (
     <div className='mx-4 sm:mx-[10%]'>
+        <ToastContainer position='top-right' theme='colored' limit={1} autoClose={3000} hideProgressBar={true} />
       <Navbar/>
         <Routes>
             <Route path='/' element={<Home />}/>
