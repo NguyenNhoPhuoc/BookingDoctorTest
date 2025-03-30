@@ -14,6 +14,8 @@ const AppContextProvider = (props) => {
             const { data } = await axios.get(backendURL + '/api/doctor/list')
             if (data.success) {
                 setDoctors(data.doctors)
+                console.log(data.doctors);
+                
             } else {
                 toast.error("Failed to fetch doctors data.")
             }

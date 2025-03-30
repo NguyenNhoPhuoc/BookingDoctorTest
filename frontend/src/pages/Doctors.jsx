@@ -22,15 +22,17 @@ const Doctors = () => {
 
   return (
     <div>
-      <p className='text-gray-600'>Browse through the doctors specialist.</p>
+      <p className='text-gray-600 text-2xl'>Chọn chuyên khoa bác sĩ mà bạn muốn khám.</p>
       <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
-        <div className='flex flex-col gap-4 text-sm text-gray-600'>
-          <p onClick={()=> speciality === 'General physician' ? navigate ('/doctors') : navigate('/doctors/General physician')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "General physician" ? "bg-indigo-100 text-black" : "" }`}>General physician</p>
-          <p onClick={()=> speciality === 'Gynecologist' ? navigate ('/doctors') : navigate('/doctors/Gynecologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Gynecologist" ? "bg-indigo-100 text-black" : "" }`}>Gynecologist</p>
-          <p onClick={()=> speciality === 'Dermatologist' ? navigate ('/doctors') : navigate('/doctors/Dermatologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Dermatologist" ? "bg-indigo-100 text-black" : "" }`}>Dermatologist</p>
-          <p onClick={()=> speciality === 'Pediatricians' ? navigate ('/doctors') : navigate('/doctors/Pediatricians')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Pediatricians" ? "bg-indigo-100 text-black" : "" }`}>Pediatricians</p>
-          <p onClick={()=> speciality === 'Neurologist' ? navigate ('/doctors') : navigate('/doctors/Neurologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Neurologist" ? "bg-indigo-100 text-black" : "" }`}>Neurologist</p>
-          <p onClick={()=> speciality === 'Gastroenterologist' ? navigate ('/doctors') : navigate('/doctors/Gastroenterologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Gastroenterologist" ? "bg-indigo-100 text-black" : "" }`}>Gastroenterologist</p>
+        <div className='flex flex-col gap-4 text-base font-medium text-gray-600'>
+          <p onClick={()=> speciality === 'Tim Mạch' ? navigate ('/doctors') : navigate('/doctors/Tim Mạch')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Tim Mạch" ? "bg-indigo-100 text-black" : "" }`}>Tim Mạch</p>
+          <p onClick={()=> speciality === 'Hô Hấp - Phổi' ? navigate ('/doctors') : navigate('/doctors/Hô Hấp - Phổi')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Hô Hấp - Phổi" ? "bg-indigo-100 text-black" : "" }`}>Hô Hấp - Phổi</p>
+          <p onClick={()=> speciality === 'Tiêu Hóa' ? navigate ('/doctors') : navigate('/doctors/Tiêu Hóa')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Tiêu Hóa" ? "bg-indigo-100 text-black" : "" }`}>Tiêu Hóa</p>
+          <p onClick={()=> speciality === 'Thần Kinh' ? navigate ('/doctors') : navigate('/doctors/Thần Kinh')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Thần Kinh" ? "bg-indigo-100 text-black" : "" }`}>Thần Kinh</p>
+          <p onClick={()=> speciality === 'Cơ - Xương - Khớp' ? navigate ('/doctors') : navigate('/doctors/Cơ - Xương - Khớp')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Cơ - Xương - Khớp" ? "bg-indigo-100 text-black" : "" }`}>Cơ - Xương - Khớp</p>
+          <p onClick={()=> speciality === 'Nội Tiết' ? navigate ('/doctors') : navigate('/doctors/Nội Tiết')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Nội Tiết" ? "bg-indigo-100 text-black" : "" }`}>Nội Tiết</p>
+          <p onClick={()=> speciality === 'Truyền Nhiễm' ? navigate ('/doctors') : navigate('/doctors/Truyền Nhiễm')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Truyền Nhiễm" ? "bg-indigo-100 text-black" : "" }`}>Truyền Nhiễm</p>
+          <p onClick={()=> speciality === 'Thận - Niệu' ? navigate ('/doctors') : navigate('/doctors/Thận - Niệu')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Thận - Niệu" ? "bg-indigo-100 text-black" : "" }`}>Thận - Niệu</p>
         </div>
         <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 gap-y-6'>
           {

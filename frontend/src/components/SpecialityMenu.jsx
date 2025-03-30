@@ -21,16 +21,16 @@ const SpecialityMenu = () => {
         Đơn giản là duyệt qua danh sách bác sĩ tin cậy của chúng tôi, đặt lịch hẹn dễ dàng.
       </p>
 
-      <div className='flex sm:justify-center gap-4 pt-5 w-full overflow-scroll'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  gap-8 pt-5 w-full'>
         {specialityData.map((item, index) => (
           <Link
             onClick={() => scrollTo(0, 0)}
-            className='flex flex-col items-center text-xs cursor-pointer flex-shrink-0 hover:-translate-y-2 transition-all duration-500'
+            className='flex flex-col items-center text-xs cursor-pointer hover:-translate-y-2 transition-all duration-500'
             key={index}
             to={`/doctors/${item.speciality}`}
           >
-            <img className='w-20 sm:w-50 mb-2' src={item.image} alt={item.speciality} />
-            <p>{item.speciality}</p>
+            <img className='w-50 sm:w-60 mb-3' src={item.image} alt={item.speciality} />
+            <p className='text-xl text-center'>{item.speciality}</p>
           </Link>
         ))}
       </div>
