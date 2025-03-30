@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
-    const { token, setToken,userData } = useContext(AppContext)
+    const { token, setToken, userData } = useContext(AppContext)
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false)
     const logout = () => {
@@ -12,6 +12,7 @@ const Navbar = () => {
         localStorage.removeItem('token')
         navigate('/')
     }
+    
     return (
         <div className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400 '>
             <img onClick={() => navigate('/')} className='w-44 cursor-pointer' src={assets.logo} alt="" />
