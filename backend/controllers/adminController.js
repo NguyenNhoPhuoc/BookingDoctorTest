@@ -11,7 +11,7 @@ const addDoctor = async (req, res) => {
         const { name, email, password, degree, speciality, experience, about, fees, address } = req.body;
         const imageFile = req.file
         if (!name || !email || !password || !degree || !speciality || !experience || !about || !fees || !address) {
-            return res.status(400).json({ message: "Missing required fields" });
+            return res.status(400).json({ success: false, message: "All fields are required" });
         }
         if (!validator.isEmail(email)) {
             return res.status(400).json({ message: "Invalid email" });
@@ -198,4 +198,3 @@ const adminDashBoard = async (req, res) => {
 }
 
 export { addDoctor, adminDashBoard, adminLogin, appointmentCancel, appointmentsAdmin, getAllDoctors };
-
