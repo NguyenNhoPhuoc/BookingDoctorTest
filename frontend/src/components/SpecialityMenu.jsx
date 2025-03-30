@@ -16,10 +16,9 @@ const SpecialityMenu = () => {
       className='flex flex-col items-center gap-4 py-16 text-gray-800'
       id='speciality'
     >
-      <h1 className='text-3xl font-medium'>Find by Speciality</h1>
-      <p className='sm:w-1/3 text-center text-sm'>
-        Simply browse through our extensive list of trusted doctors, schedule
-        your appointment hassle-free.
+      <h1 className='text-3xl font-medium'>Tìm kiếm Theo Chuyên Khoa Trong Khoa Nội Tổng Quát</h1>
+      <p className='sm:w-1/3 text-center text-lg'>
+        Đơn giản là duyệt qua danh sách bác sĩ tin cậy của chúng tôi, đặt lịch hẹn dễ dàng.
       </p>
 
       <div className='flex sm:justify-center gap-4 pt-5 w-full overflow-scroll'>
@@ -30,7 +29,7 @@ const SpecialityMenu = () => {
             key={index}
             to={`/doctors/${item.speciality}`}
           >
-            <img className='w-16 sm:w-24 mb-2' src={item.image} alt={item.speciality} />
+            <img className='w-20 sm:w-50 mb-2' src={item.image} alt={item.speciality} />
             <p>{item.speciality}</p>
           </Link>
         ))}
