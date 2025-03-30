@@ -2,9 +2,9 @@ import about_image from './about_image.png'
 import appointment_img from './appointment_img.png'
 import arrow_icon from './arrow_icon.svg'
 import chats_icon from './chats_icon.svg'
+import xuongkhop from './co-xuong-khop.png'
 import contact_image from './contact_image.png'
 import cross_icon from './cross_icon.png'
-import Dermatologist from './Dermatologist.svg'
 import doc1 from './doc1.png'
 import doc10 from './doc10.png'
 import doc11 from './doc11.png'
@@ -21,19 +21,21 @@ import doc7 from './doc7.png'
 import doc8 from './doc8.png'
 import doc9 from './doc9.png'
 import dropdown_icon from './dropdown_icon.svg'
-import Gastroenterologist from './Gastroenterologist.svg'
 import group_profiles from './group_profiles.png'
-import Gynecologist from './Gynecologist.svg'
 import header_img from './header_img.png'
+import hohap from './ho-hap-phoi.png'
 import info_icon from './info_icon.svg'
 import logo from './logo.svg'
 import menu_icon from './menu_icon.svg'
-import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
+import noitiet from './noi-tiet.png'
 import profile_pic from './profile_pic.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
-import tim_mach from './tim-mach.png'
+import thankinh from './than-kinh.png'
+import than from './than-tiet-nieu.png'
+import tieuhoa from './tieu-hoa.png'
+import timmach from './tim-mach.png'
+import truyennhiem from './truyen-nhiem.png'
 import upload_icon from './upload_icon.png'
 import verified_icon from './verified_icon.svg'
 
@@ -59,36 +61,36 @@ export const assets = {
 
 export const specialityData = [
     {
-        speciality: 'Bác Sĩ Tim Mạch',
-        image: tim_mach
+        speciality: 'Tim Mạch',
+        image: timmach
     },
     {
-        speciality: 'Bác Sĩ Hô Hấp - Phổi',
-        image: Gynecologist
+        speciality: 'Hô Hấp - Phổi',
+        image: hohap
     },
     {
-        speciality: 'Bác sĩ Tiêu Hóa',
-        image: Dermatologist
+        speciality: 'Tiêu Hóa',
+        image: tieuhoa
     },
     {
-        speciality: 'Bác Sĩ Thần Kinh',
-        image: Pediatricians
+        speciality: 'Thần Kinh',
+        image: thankinh
     },
     {
-        speciality: 'Bác Sĩ Cơ - Xương - Khớp',
-        image: Neurologist
+        speciality: 'Cơ - Xương - Khớp',
+        image: xuongkhop
     },
     {
-        speciality: 'Bác Sĩ Nội Tiết',
-        image: Gastroenterologist
+        speciality: 'Nội Tiết',
+        image: noitiet
     },
     {
-        speciality: 'Bác Sĩ Truyền Nhiễm',
-        image: Gastroenterologist
+        speciality: 'Truyền Nhiễm',
+        image: truyennhiem
     },
     {
-        speciality: 'Bác Sĩ Thận - Niệu',
-        image: Gastroenterologist
+        speciality: 'Thận - Niệu',
+        image: than
     },
 ]
 

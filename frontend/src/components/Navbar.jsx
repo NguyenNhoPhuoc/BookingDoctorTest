@@ -11,46 +11,47 @@ const Navbar = () => {
         setToken(false)
         localStorage.removeItem('token')
         navigate('/')
+    } 
+    const login = () => {
+        navigate('/login')
     }
-    
     return (
-        <div className='flex items-center justify-between text-[15px] py-4 mb-5 border-b border-b-gray-400 '>
-            <img onClick={() => navigate('/')} className='w-44 cursor-pointer' src={assets.logo} alt="" />
-            <ul className='hidden md:flex items-start gap-5 font-medium'>
-                <NavLink to='/'>
-                    <li className='py-1'>TRANG CHỦ</li>
-                    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+        <div className='flex items-center justify-between text-[15px] py-4 mb-5 border-b border-b-gray-400 sticky top-0 bg-white z-50'>
+            <img onClick={() => navigate('/')} className='w-44 cursor-pointer hover:scale-105 transition-transform duration-300' src={assets.logo} alt="" />
+            <ul className='hidden md:flex items-start gap-8 font-medium'>
+                <NavLink to='/' className='relative group'>
+                    <li className='py-1 hover:text-primary transition-colors duration-300'>TRANG CHỦ</li>
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
-                <NavLink to='/doctors'>
-                    <li className='py-1'>TẤT CẢ BÁC SĨ</li>
-                    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+                <NavLink to='/doctors' className='relative group'>
+                    <li className='py-1 hover:text-primary transition-colors duration-300'>TẤT CẢ BÁC SĨ</li>
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
-                <NavLink to='/about'>
-                    <li className='py-1'>VỀ CHÚNG TÔI</li>
-                    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+                <NavLink to='/about' className='relative group'>
+                    <li className='py-1 hover:text-primary transition-colors duration-300'>VỀ CHÚNG TÔI</li>
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
-                <NavLink to='contact'>
-                    <li className='py-1'>LIÊN HỆ</li>
-                    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+                <NavLink to='contact' className='relative group'>
+                    <li className='py-1 hover:text-primary transition-colors duration-300'>LIÊN HỆ</li>
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
             </ul>
-            <div className='flex items-center gap-4 '>
+            <div className='flex items-center gap-4'>
                 {
                     token
                         ? <div className='flex items-center gap-2 cursor-pointer group relative'>
-                            <img className='w-8 h-8 rounded-full object-cover' src={userData.image} alt="" />
-                            <img className='w-2.5' src={assets.dropdown_icon} alt="" />
-                            <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
-                                <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
-                                    <p onClick={() => navigate('my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
-                                    <p onClick={() => navigate('my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
-                                    <p onClick={logout} className='hover:text-black cursor-pointer'>Logout</p>
+                            <img className='w-8 h-8 rounded-full object-cover ring-2 ring-primary ring-offset-2 transition-all duration-300' src={userData.image} alt="" />
+                            <img className='w-2.5 transition-transform group-hover:rotate-180 duration-300' src={assets.dropdown_icon} alt="" />
+                            <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300'>
+                                <div className='min-w-48 bg-white shadow-lg rounded-lg flex flex-col gap-4 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
+                                    <p onClick={() => navigate('my-profile')} className='hover:text-primary hover:translate-x-2 transition-all duration-300 cursor-pointer'>Hồ sơ của tôi</p>
+                                    <p onClick={() => navigate('my-appointments')} className='hover:text-primary hover:translate-x-2 transition-all duration-300 cursor-pointer'>Lịch khám của tôi</p>
+                                    <p onClick={logout} className='hover:text-primary hover:translate-x-2 transition-all duration-300 cursor-pointer'>Đăng xuất</p>
                                 </div>
                             </div>
                         </div>
-                        : <button onClick={() => navigate('/login')} className='bg-primary cursor-pointer text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
+                        : <button onClick={login} className='bg-primary cursor-pointer text-white px-8 py-3 rounded-full font-light hidden md:block hover:bg-indigo-600 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg'>Tạo tài khoản</button>
                 }
-
             </div>
         </div>
     )

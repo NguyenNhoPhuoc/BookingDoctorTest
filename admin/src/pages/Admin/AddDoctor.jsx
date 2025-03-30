@@ -90,62 +90,64 @@ const AddDoctor = () => {
                 <div className='flex flex-col lg:flex-row items-start gap-10 text-gray-600'>
                     <div className='flex flex-col gap-4 w-full lg:flex-1'>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Doctor name</p>
+                            <p>Tên bác sĩ</p>
                             <input value={name} onChange={(e) => setName(e.target.value)} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Name' required />
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p className=''>Doctor Email</p>
+                            <p className=''>Email bác sĩ</p>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Email' required />
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Doctor Password</p>
+                            <p>Mật khẩu bác sĩ</p>
                             <input value={password} onChange={(e) => setPassword(e.target.value)} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Password' required />
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Experience</p>
+                            <p>Kinh nghiệm bác sĩ</p>
                             <select onChange={(e) => setExperience(e.target.value)} value={experience} className='border border-gray-300 px-2 py-2' name="" id="">
-                                <option value="1 Years">1 Years</option>
-                                <option value="2 Years">2 Years</option>
-                                <option value="3 Years">3 Years</option>
-                                <option value="4 Years">4 Years</option>
-                                <option value="5 Years">5 Years</option>
-                                <option value="6 Years">6 Years</option>
-                                <option value="7 Years">7 Years</option>
-                                <option value="8 Years">8 Years</option>
-                                <option value="9 Years">9 Years</option>
-                                <option value="10 Years">10 Years</option>
+                                <option value="1 Năm">1 Năm</option>
+                                <option value="2 Năm">2 Năm</option>
+                                <option value="3 Năm">3 Năm</option>
+                                <option value="4 Năm">4 Năm</option>
+                                <option value="5 Năm">5 Năm</option>
+                                <option value="6 Năm">6 Năm</option>
+                                <option value="7 Năm">7 Năm</option>
+                                <option value="8 Năm">8 Năm</option>
+                                <option value="9 Năm">9 Năm</option>
+                                <option value="10 Năm">10 Năm</option>
                             </select>
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Fees</p>
+                            <p>Giá khám bác sĩ</p>
                             <input onChange={(e) => setFees(e.target.value)} value={fees} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Fees' required />
                         </div>
                     </div>
                     <div className='flex flex-col gap-4 w-full lg:flex-1'>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Speciality</p>
+                            <p>Chuyên khoa</p>
                             <select onChange={(e) => setSpeciality(e.target.value)} value={speciality} className='border border-gray-300 px-2 py-2' name="" id="">
-                                <option value="General physician">General physician</option>
-                                <option value="Gynecologist">Gynecologist</option>
-                                <option value="Dermatologist">Dermatologist</option>
-                                <option value="Pediatricians">Pediatricians</option>
-                                <option value="Neurologist">Neurologist</option>
-                                <option value="Gastroenterologist">Gastroenterologist</option>
+                                <option value="Tim Mạch">Tim Mạch</option>
+                                <option value="Hô Hấp - Phổi">Hô Hấp - Phổi</option>
+                                <option value="Tiêu Hóa">Tiêu Hóa</option>
+                                <option value="Thần Kinh">Thần Kinh</option>
+                                <option value="Cơ - Xương - Khớp">Cơ - Xương - Khớp</option>
+                                <option value="Nội Tiết">Nội Tiết</option>
+                                <option value="Truyền Nhiễm">Truyền Nhiễm</option>
+                                <option value="Thận - Niệu">Thận - Niệu</option>
                             </select>
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Education</p>
+                            <p>Trình độ</p>
                             <input onChange={(e) => setDegree(e.target.value)} value={degree} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Education' required />
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Address</p>
+                            <p>Địa chỉ</p>
                             <input onChange={(e) => setAddress1(e.target.value)} value={address1} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Address 1' required />
                             <input onChange={(e) => setAddress2(e.target.value)} value={address2} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Address 2' required />
                         </div>
                     </div>
                 </div>
                 <div className='flex-1 flex flex-col mt-2 gap-1'>
-                    <p className='text-gray-500'>About Doctor</p>
+                    <p className='text-gray-500'>Về bác sĩ</p>
                     <textarea onChange={(e) => setAbout(e.target.value)} value={about} className='border w-full px-4 pt-2 border-gray-300 ' type='text' placeholder='Write about doctor' rows={5} required></textarea>
                 </div>
                 <button type='submit' className='bg-[#5F6FFF] px-10 py-3 rounded-full text-sm mt-4 text-white transition-transform cursor-pointer hover:scale-110'>Add Doctor</button>
