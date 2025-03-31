@@ -8,8 +8,8 @@ import userModel from "../models/userModel.js";
 // api for register user
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        if (!name || !email || !password) {
+        const { name, email, password,phone,gender,dob } = req.body;
+        if (!name || !email || !password || !phone || !gender || !dob) {
             return res.status(400).json({ succes: false, message: "All fields are required" });
         }
         if (!validator.isEmail(email)) {
@@ -18,6 +18,9 @@ const registerUser = async (req, res) => {
         if (password.length < 8) {
             return res.status(400).json({ succes: false, message: "Password must be at least 8 characters" });
         }
+        if (!validator.isMobilePhone(phone)) {
+            return res.status(400).json({ succes: false, message: "Invalid phone number" });
+        }
         // hash password
         const salt = await bcrypt.genSalt(8);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -25,6 +28,9 @@ const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            phone,
+            gender,
+            dob
         }
         const newUser = new userModel(userData);
         const user = await newUser.save();

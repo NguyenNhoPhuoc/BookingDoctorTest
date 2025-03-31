@@ -11,12 +11,11 @@ const AddDoctor = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [experience, setExperience] = useState('1 years');
+    const [experience, setExperience] = useState('1 năm');
     const [fees, setFees] = useState('');
-    const [speciality, setSpeciality] = useState('General physician');
+    const [speciality, setSpeciality] = useState('Tim Mạch');
     const [degree, setDegree] = useState('');
-    const [address1, setAddress1] = useState('');
-    const [address2, setAddress2] = useState('');
+    const [address, setAddress] = useState('');
     const [about, setAbout] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -44,7 +43,7 @@ const AddDoctor = () => {
             formData.append('fees', Number(fees))
             formData.append('speciality', speciality)
             formData.append('degree', degree)
-            formData.append('address', JSON.stringify({ line1: address1, line2: address2 }))
+            formData.append('address', address)
             formData.append('about', about)
             const {data} = await axios.post(backendUrl + '/api/admin/add-doctor', formData, {headers: {aToken} });
             if (data.success) {
@@ -53,12 +52,11 @@ const AddDoctor = () => {
                 setName('');
                 setEmail('');
                 setPassword('');
-                setExperience('1 years');
+                setExperience('1 năm');
                 setFees('');
-                setSpeciality('General physician');
+                setSpeciality('Tim Mạch');
                 setDegree('');
-                setAddress1('');
-                setAddress2('');
+                setAddress('');
                 setAbout('');
             } else {
                 toast.error(data.message);
@@ -72,7 +70,7 @@ const AddDoctor = () => {
     }
     return (
         <form onSubmit={onSubmitHandler} className='m-5 w-full'>
-            <p className='mb-3 text-lg font-medium'>Add Doctor</p>
+            <p className='mb-3 text-lg font-medium'>Thêm Bác Sĩ</p>
             <div className='relative bg-white gap-2 p-8 border border-gray-300 rounded w-full max-w-4xl max-h-[90vh] overflow-y-scroll'>
                 {/* Show a loading */}
                 {loading && (
@@ -85,7 +83,7 @@ const AddDoctor = () => {
                         <img className='w-16 bg-gray-100 rounded-full cursor-pointer' src={docImg ? URL.createObjectURL(docImg) : assets.upload_area} alt="" />
                     </label>
                     <input onChange={(e) => { setDocImg(e.target.files[0]) }} type="file" id='doc-img' hidden />
-                    <p>Upload doctor <br /> picture</p>
+                    <p className='text-xl font-medium'>Tải lên hình ảnh bác sĩ</p>
                 </div>
                 <div className='flex flex-col lg:flex-row items-start gap-10 text-gray-600'>
                     <div className='flex flex-col gap-4 w-full lg:flex-1'>
@@ -103,18 +101,7 @@ const AddDoctor = () => {
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
                             <p>Kinh nghiệm bác sĩ</p>
-                            <select onChange={(e) => setExperience(e.target.value)} value={experience} className='border border-gray-300 px-2 py-2' name="" id="">
-                                <option value="1 Năm">1 Năm</option>
-                                <option value="2 Năm">2 Năm</option>
-                                <option value="3 Năm">3 Năm</option>
-                                <option value="4 Năm">4 Năm</option>
-                                <option value="5 Năm">5 Năm</option>
-                                <option value="6 Năm">6 Năm</option>
-                                <option value="7 Năm">7 Năm</option>
-                                <option value="8 Năm">8 Năm</option>
-                                <option value="9 Năm">9 Năm</option>
-                                <option value="10 Năm">10 Năm</option>
-                            </select>
+                            <input onChange={(e) => setExperience(e.target.value)} value={experience} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='experience' required />
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
                             <p>Giá khám bác sĩ</p>
@@ -136,13 +123,13 @@ const AddDoctor = () => {
                             </select>
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
-                            <p>Trình độ</p>
-                            <input onChange={(e) => setDegree(e.target.value)} value={degree} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Education' required />
+                            <p>Quá trình đào tạo</p>
+                            <textarea onChange={(e) => setDegree(e.target.value)} value={degree} className='border w-full px-4 pt-2 border-gray-300 ' type='text' placeholder='Write about doctor' rows={5} required></textarea>
                         </div>
                         <div className='flex-1 flex flex-col gap-1'>
                             <p>Địa chỉ</p>
-                            <input onChange={(e) => setAddress1(e.target.value)} value={address1} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Address 1' required />
-                            <input onChange={(e) => setAddress2(e.target.value)} value={address2} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Address 2' required />
+                            <input onChange={(e) => setAddress(e.target.value)} value={address} className='border rounded border-gray-300 px-3 py-2' type="text" placeholder='Address' required />
+                
                         </div>
                     </div>
                 </div>
@@ -150,7 +137,7 @@ const AddDoctor = () => {
                     <p className='text-gray-500'>Về bác sĩ</p>
                     <textarea onChange={(e) => setAbout(e.target.value)} value={about} className='border w-full px-4 pt-2 border-gray-300 ' type='text' placeholder='Write about doctor' rows={5} required></textarea>
                 </div>
-                <button type='submit' className='bg-[#5F6FFF] px-10 py-3 rounded-full text-sm mt-4 text-white transition-transform cursor-pointer hover:scale-110'>Add Doctor</button>
+                <button type='submit' className='bg-[#5F6FFF] px-10 py-3 rounded-full text-sm mt-4 text-white transition-transform cursor-pointer hover:scale-110'>Thêm Bác Sĩ</button>
             </div>
         </form>
     )

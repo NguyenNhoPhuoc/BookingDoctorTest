@@ -48,12 +48,17 @@ const MyAppointments = () => {
               <img className='w-32 bg-indigo-50' src={item.docData.image} alt="" />
             </div>
             <div className='flex-1 text-sm text-zinc-600'>
-              <p className='text-neutral-800 font-semibold'>{item.docData.name}</p>
-              <p>{item.docData.speciality}</p>
-              <div className='flex gap-2'>
-                <p className='text-zinc-700 font-medium'>Địa Chỉ: </p>
-                <p> {item.docData.address.line1}, {item.docData.address.line2}</p>
-              </div>
+              <p className='text-neutral-800 font-semibold'>Bác Sĩ {item.docData.name}</p>
+              <p>Khoa Nội {item.docData.speciality}</p>
+              <div>
+              <p className="text-gray-900 font-medium mt-1">
+              Địa chỉ:{" "}
+              <span className="text-cyan-500">
+                Phòng Khám Nội Tổng Quát MediLink
+              </span>
+            </p>
+            <p className="text-gray-600 font-medium mt-1">33 Nguyễn Văn Linh, Bình Hiên, Hải Châu, Đà Nẵng</p>
+            </div>
 
               <p className='text-xs mt-1'><span className='text-sm text-neutral-700 font-medium'>Thời Gian: </span>{item.slotTime} | {item.slotDate}</p>
             </div>
