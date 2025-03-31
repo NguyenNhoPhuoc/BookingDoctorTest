@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
@@ -13,22 +13,28 @@ import MyAppointments from './pages/MyAppointments'
 import MyProfile from './pages/MyProfile'
 
 const App = () => {
+  const location = useLocation()
+  const isLoginPage = location.pathname === '/login'
+
   return (
-    <div className='mx-4 sm:mx-[10%]'>
-        <ToastContainer position='top-right' theme='colored' limit={1} autoClose={3000} hideProgressBar={true} />
-      <Navbar/>
-        <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/doctors' element={<Doctors />}/>
-            <Route path='/doctors/:speciality' element={<Doctors />}/>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/about' element={<About />}/>
-            <Route path='/contact' element={<Contact />}/>
-            <Route path='/my-profile' element={<MyProfile />}/>
-            <Route path='/my-appointments' element={<MyAppointments />}/>
-            <Route path='/appointment/:docId' element={<Appointment />}/>
-        </Routes>
-        <Footer/>
+    <div className={isLoginPage ? 'w-full h-screen' : 'mx-4 sm:mx-[10%]'}>
+      <ToastContainer position='top-right' theme='colored' limit={1} autoClose={3000} hideProgressBar={true} />
+      
+      {!isLoginPage && <Navbar />}
+      
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/doctors' element={<Doctors />} />
+        <Route path='/doctors/:speciality' element={<Doctors />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/my-profile' element={<MyProfile />} />
+        <Route path='/my-appointments' element={<MyAppointments />} />
+        <Route path='/appointment/:docId' element={<Appointment />} />
+      </Routes>
+
+      {!isLoginPage && <Footer />}
     </div>
   )
 }

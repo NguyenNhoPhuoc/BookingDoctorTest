@@ -40,7 +40,7 @@ const DoctorProfile = () => {
     return profileData && (
         <div className="p-6 max-w-5xl mx-auto">
             <div className="flex flex-col md:flex-row gap-8">
-                <div className="w-full md:w-1/3">
+                <div className="w-full md:w-2/4">
                     <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                         <img 
                             className="w-full h-64 object-cover" 
@@ -79,8 +79,16 @@ const DoctorProfile = () => {
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-800 mb-2">Địa chỉ</h3>
                                     <p className="text-gray-600">
-                                        {isEdit ? <input type="text" value={profileData.address.line1} onChange={(e) => setProfileData(prev => ({...prev, address: {...prev.address, line1: e.target.value}}))} /> : profileData.address.line1},
-                                        {isEdit ? <input type="text" value={profileData.address.line2} onChange={(e) => setProfileData(prev => ({...prev, address: {...prev.address, line2: e.target.value}}))} /> : profileData.address.line2}
+                                        {isEdit ? 
+                                            <input 
+                                                type="text" 
+                                                value={profileData.address}
+                                                onChange={(e) => setProfileData(prev => ({...prev, address: e.target.value}))}
+                                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200"
+                                                placeholder="Nhập địa chỉ..."
+                                            /> 
+                                            : profileData.address
+                                        }
                                     </p>
                                 </div>
                             </div>

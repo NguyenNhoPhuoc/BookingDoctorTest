@@ -93,27 +93,17 @@ const MyProfile = () => {
                 <input
                   className="w-full px-3 py-2 bg-gray-50 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   type="text"
-                  value={userData.address?.line1 || ''}
+                  value={userData.address || ''}
                   onChange={e => setUserData(prev => ({
                     ...prev,
-                    address: { ...prev.address, line1: e.target.value }
+                    address: e.target.value
                   }))}
-                  placeholder="Địa chỉ dòng 1"
-                />
-                <input
-                  className="w-full px-3 py-2 bg-gray-50 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  type="text"
-                  value={userData.address?.line2 || ''}
-                  onChange={e => setUserData(prev => ({
-                    ...prev,
-                    address: { ...prev.address, line2: e.target.value }
-                  }))}
-                  placeholder="Địa chỉ dòng 2"
+                  placeholder="Địa chỉ"
                 />
               </div>
             ) : (
               <div className="text-gray-600">
-                {userData.address?.line1}, {userData.address?.line2}
+                {userData.address}
               </div>
             )}
           </div>

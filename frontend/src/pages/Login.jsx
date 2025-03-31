@@ -9,6 +9,9 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [gender, setGender] = useState('')
+  const [dob, setDob] = useState('')
   const navigate = useNavigate()
   const onSubmitHandler = async (event) => {
     event.preventDefault()
@@ -22,7 +25,10 @@ const Login = () => {
           const {data} = await axios.post(backendURL + '/api/user/register', {
             name,
             email,
-            password
+            password,
+            phone,
+            gender,
+            dob
           })
     
           
@@ -58,37 +64,116 @@ const Login = () => {
   }, [token])
 
   return (
-    <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center'>
-      <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-zinc-600 text-sm shadow-lg'>
-        <p className='text-2xl font-semibold'>{state === 'Đăng ký' ? "Tạo tài khoản" : "Đăng nhập"}</p>
-        <p>Vui lòng {state === 'Đăng ký' ? "đăng ký" : "đăng nhập"} để đặt lịch khám</p>
-        {
-          state === 'Đăng ký' && <div className='w-full'>
-            <p>Họ và tên</p>
-            <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="text" onChange={(e) => setName(e.target.value)} value={name} required />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 from-sky-500 to-black">
+      <div className="w-full max-w-md p-8 bg-gray-800 bg-opacity-80 rounded-xl m-10 shadow-2xl transform transition-all duration-500 hover:scale-105">
+        <h2 className="text-3xl font-bold text-white mb-3 text-center animate-pulse">
+          {state === 'Đăng nhập' ? 'Đăng nhập' : 'Đăng ký'}
+        </h2>
+
+        <form onSubmit={onSubmitHandler} className="space-y-5">
+          {state === 'Đăng ký' && (
+            <div className="animate-fadeIn">
+              <label className="block text-sm font-medium text-gray-300">Tên người dùng</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                placeholder="Nhập tên của bạn"
+                required
+              />
+            </div>
+          )}
+
+          <div className="animate-slideUp">
+            <label className="block text-sm font-medium text-gray-300">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              placeholder="Nhập email của bạn"
+              required
+            />
           </div>
-        }
+          {
+            state === 'Đăng ký' && (
+              <div className="animate-slideUp">
+                <label className="block text-sm font-medium text-gray-300">Số điện thoại</label>
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              placeholder="Nhập số điện thoại của bạn"
+              required
+                />
+              </div>
+            )
+          }
+          {
+            state === 'Đăng ký' && (
+              <div className="animate-slideUp">
+                <label className="block text-sm font-medium text-gray-300">Giới tính</label>
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              required
+            >
+              <option value="">Chọn giới tính</option>
+              <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
+            </div>
+          )}
+          {
+            state === 'Đăng ký' && (
+              <div className="animate-slideUp">
+                <label className="block text-sm font-medium text-gray-300">Ngày sinh</label>
+                <input
+              type="date"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              required
+                />
+              </div>
+            )
+          }
+          <div className="animate-slideUp delay-100">
+            <label className="block text-sm font-medium text-gray-300">Mật khẩu</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              placeholder="Nhập mật khẩu"
+              required
+            />
+          </div>
 
+          <button
+            type="submit"
+            className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
+          >
+            {state === 'Đăng nhập' ? 'Đăng nhập' : 'Đăng ký'}
+          </button>
 
-        <div className='w-full'>
-          <p>Email</p>
-          <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="email" onChange={(e) => setEmail(e.target.value)} value={email} required />
-        </div>
-
-        <div className='w-full'>
-          <p>Mật khẩu</p>
-          <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
-        </div>
-
-        <button type='submit' className='bg-primary text-white w-full py-2 rounded-md text-base cursor-pointer'>{state === 'Đăng ký' ? "Tạo tài khoản" : "Đăng nhập"}</button>
-        {
-          state === "Đăng ký"
-            ? <p>Đã có tài khoản? <span onClick={() => setState('Đăng nhập')} className='text-[#6366f1] underline cursor-pointer'>Đăng nhập ở đây</span></p>
-            : <p>Tạo tài khoản mới? <span onClick={() => setState('Đăng ký')} className='text-[#6366f1] underline cursor-pointer'>Click vào đây</span></p>
-        }
+          <p className="text-gray-400 text-center">
+            {state === 'Đăng nhập' ? 'Chưa có tài khoản? ' : 'Đã có tài khoản? '}
+            <button
+              type="button"
+              onClick={() => setState(state === 'Đăng nhập' ? 'Đăng ký' : 'Đăng nhập')}
+              className="text-purple-400 hover:text-purple-300 transition-colors duration-300"
+            >
+              {state === 'Đăng nhập' ? 'Đăng ký' : 'Đăng nhập'}
+            </button>
+          </p>
+        </form>
       </div>
-    </form>
-  )
+    </div>
+  );
 }
 
 export default Login
