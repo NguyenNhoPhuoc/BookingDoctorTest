@@ -6,6 +6,7 @@ import connectDB from './config/mongodb.js'
 import adminRouter from './routes/adminRouter.js'
 import doctorRouter from './routes/doctorRouter.js'
 import userRouter from './routes/userRouter.js'
+import vnpayRoutes from './routes/vnpayRoutes.js'
 // App config
 const app= express()
 const port = process.env.PORT || 4000
@@ -20,6 +21,7 @@ connectCloudinary()
 app.use('/api/admin',adminRouter)
 app.use('/api/doctor',doctorRouter)
 app.use('/api/user',userRouter)
+app.use('/api/payment', vnpayRoutes)
 app.get('/',(req,res)=>{
     res.send("API Working")
 })

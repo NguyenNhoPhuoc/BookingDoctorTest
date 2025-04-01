@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import PaymentButton from '../components/PaymentButton'
 import { AppContext } from '../context/AppContext'
 const MyAppointments = () => {
 
@@ -75,7 +76,7 @@ const MyAppointments = () => {
               )}
 
               {/* Trường hợp đã hoàn thành và thanh toán */}
-              {item.isCompleted && item.payment && (
+              { item.payment && (
                 <button
                   className='text-sm font-medium text-green-500 text-center px-4 py-2.5 border border-green-200 rounded-md bg-green-50'
                   disabled
@@ -86,12 +87,7 @@ const MyAppointments = () => {
 
               {/* Trường hợp đã hoàn thành nhưng chưa thanh toán */}
               {!item.cancelled && !item.payment && (
-                <button
-                  onClick={() => handlePayment(item._id)} 
-                  className='text-sm font-medium text-blue-600 text-center px-4 py-2.5 border border-blue-200 rounded-md hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-300 shadow-sm'
-                >
-                  Thanh Toán
-                </button>
+                <PaymentButton appointmentId={item._id} amount={item.amount} />
               )}
 
               {/* Trường hợp chưa hủy và chưa hoàn thành */}

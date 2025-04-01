@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { v2 as cloudinary } from "cloudinary";
 import jwt from "jsonwebtoken";
 import validator from "validator";
+import sendAppointmentConfirmationEmail from '../config/sendMail.js';
 import appointmentModel from "../models/appointmentModel.js";
 import doctorModel from "../models/doctorModel.js";
 import userModel from "../models/userModel.js";
@@ -112,13 +113,13 @@ const bookAppointment = async (req, res) => {
         const { userId, docId, slotDate, slotTime} = req.body;
         const docData = await doctorModel.findById(docId).select("-password");
         if(!docData.available){
-            return res.status(404).json({ success: false, message: "Doctor is not available" });
-        }
+            return res.status(404).json({ success: false, message: "Bác sĩ không khả dụng" });
+        }   
         let slot_booked = docData.slot_booked;
         // checking for slot availability
         if(slot_booked[slotDate]){
             if(slot_booked[slotDate].includes(slotTime)){
-            return res.status(400).json({ success: false, message: "Slot not available" });
+            return res.status(400).json({ success: false, message: "Giờ khám đã bị đặt" });
             } else {
                 slot_booked[slotDate].push(slotTime);
             }
@@ -141,7 +142,8 @@ const bookAppointment = async (req, res) => {
         const newAppointment = new appointmentModel(appointmentData);
         await newAppointment.save();
         await doctorModel.findByIdAndUpdate(docId, { slot_booked });
-        return res.status(201).json({ success: true, message: "Appointment booked successfully" });
+        await sendAppointmentConfirmationEmail(newAppointment);
+        return res.status(201).json({ success: true, message: "Đã đặt lịch hẹn thành công, vui lòng kiểm tra Gmail để xác nhận!" });
     } catch (error) {
         console.log(error);
         return res.status(500).json({ success: false, message: "Internal server error" })
