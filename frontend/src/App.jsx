@@ -11,6 +11,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import MyAppointments from './pages/MyAppointments'
 import MyProfile from './pages/MyProfile'
+import PaymentFailed from './pages/PaymentFailed'
+import PaymentSuccess from './pages/PaymentSuccess'
 
 const App = () => {
   const location = useLocation()
@@ -32,6 +34,8 @@ const App = () => {
         <Route path='/my-profile' element={<MyProfile />} />
         <Route path='/my-appointments' element={<MyAppointments />} />
         <Route path='/appointment/:docId' element={<Appointment />} />
+        <Route path='/payment-success' element={<PaymentSuccess />} />
+        <Route path='/payment-failed' element={<PaymentFailed />} />
       </Routes>
 
       {!isLoginPage && <Footer />}

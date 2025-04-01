@@ -23,7 +23,7 @@ const Navbar = () => {
                     <li className='py-1 hover:text-primary transition-colors duration-300'>TRANG CHỦ</li>
                     <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
-                <NavLink to='/doctors' className='relative group'>
+                <NavLink onClick={() => window.scrollTo(0, 0)} to='/doctors' className='relative group'>
                     <li className='py-1 hover:text-primary transition-colors duration-300'>TẤT CẢ BÁC SĨ</li>
                     <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
