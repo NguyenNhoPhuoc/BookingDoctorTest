@@ -1,31 +1,112 @@
-import React, { useContext } from 'react'
+import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import PaymentButton from '../components/PaymentButton'
 import { AppContext } from '../context/AppContext'
 const MyAppointments = () => {
 
-  const {doctors} = useContext(AppContext)
+  const { backendURL, token } = useContext(AppContext)
 
+  const [appointments, setAppointments] = useState([])
+  const getUserAppointments = async () => {
+    try {
+      const { data } = await axios.get(backendURL + '/api/user/list-appointments', { headers: { token } })
+      if (data.success) {
+        console.log(data.appointments)
+        setAppointments(data.appointments.reverse())
+      }
+    } catch (error) {
+      console.log(error)
+    }
 
+  }
+  const handleCancelAppointment = async (appointmentId) => {
+    try {
+      const { data } = await axios.post(backendURL + '/api/user/cancel-appointment', { appointmentId }, { headers: { token } })
+      if (data.success) {
+        toast.success(data.message)
+        getUserAppointments()
+      } else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (token) {
+      getUserAppointments()
+    }
+  }, [token])
   return (
     <div>
-      <p className='pb-3 mt-12 font-medium text-zinc-700 border-b'>My appointment</p>
+      <p className='pb-3 mt-12 text-2xl font-medium text-neutral-800 border-gray-300 border-b'>LỊCH HẸN CỦA TÔI</p>
       <div>
-        {doctors.slice(0,3).map((item,index)=>(
-          <div className='gird grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b' key={index}>
+        {appointments.slice(0, 3).map((item, index) => (
+          <div className='gird grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-gray-300  border-b' key={index}>
             <div>
-                <img className='w-32 bg-indigo-50' src={item.image} alt="" />
+              <img className='w-32 bg-indigo-50' src={item.docData.image} alt="" />
             </div>
             <div className='flex-1 text-sm text-zinc-600'>
-              <p className='text-neutral-800 font-semibold'>{item.name}</p>
-              <p>{item.speciality}</p>
-              <p className='text-zinc-700 font-medium'>Address:</p>
-              <p className='text-xs'>{item.address.line1}</p>
-              <p className='text-xs'>{item.address.line2}</p>
-              <p className='text-xs mt-1'><span className='text-sm text-neutral-700 font-medium'>Date & Time</span> 25, July, 2024 | 8:30 PM</p>
+              <p className='text-neutral-800 font-semibold'>Bác Sĩ {item.docData.name}</p>
+              <p>Khoa Nội {item.docData.speciality}</p>
+              <div>
+              <p className="text-gray-900 font-medium mt-1">
+              Địa chỉ:{" "}
+              <span className="text-cyan-500">
+                Phòng Khám Nội Tổng Quát MediLink
+              </span>
+            </p>
+            <p className="text-gray-600 font-medium mt-1">33 Nguyễn Văn Linh, Bình Hiên, Hải Châu, Đà Nẵng</p>
+            </div>
+
+              <p className='text-xs mt-1'><span className='text-sm text-neutral-700 font-medium'>Thời Gian: </span>{item.slotTime} | {item.slotDate}</p>
             </div>
             <div></div>
-            <div className='flex flex-col gap-2 justify-end'>
-              <button className='text-sm text-stone-500 text-center sm:min-2-48 py-2 border rounded hover:bg-indigo-700 hover:text-white transition-all cursor-pointer duration-300'>Pay Online</button>
-              <button className='text-sm text-stone-500 text-center sm:min-2-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all cursor-pointer duration-300'>Cancel appointment</button>
+            <div className='flex flex-col gap-3 justify-center min-w-[150px]'>
+              {/* Trường hợp đã hủy */}
+              {item.cancelled && (
+                <button 
+                  className='text-sm font-medium text-red-500 text-center px-4 py-2.5 border border-red-200 rounded-md bg-red-50'
+                  disabled
+                >
+                  Đã Hủy
+                </button>
+              )}
+
+              {/* Trường hợp đã hoàn thành và thanh toán */}
+              { item.payment && (
+                <button
+                  className='text-sm font-medium text-green-500 text-center px-4 py-2.5 border border-green-200 rounded-md bg-green-50'
+                  disabled
+                >
+                  Đã Thanh Toán
+                </button>
+              )}
+
+              {/* Trường hợp đã hoàn thành nhưng chưa thanh toán */}
+              {!item.cancelled && !item.payment && (
+                <PaymentButton appointmentId={item._id} amount={item.amount} />
+              )}
+
+              {/* Trường hợp chưa hủy và chưa hoàn thành */}
+              {!item.cancelled && !item.isCompleted && (
+                <button 
+                  onClick={() => handleCancelAppointment(item._id)}
+                  className='text-sm font-medium text-stone-600 text-center px-4 py-2.5 border border-red-200 rounded-md hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-300 shadow-sm'
+                >
+                  Hủy Lịch Hẹn
+                </button>
+              )}
+              {item.isCompleted && (
+                <button 
+                  onClick={() => handleCancelAppointment(item._id)}
+                  className='text-sm font-medium text-stone-600 text-center px-4 py-2.5 border border-green-200 rounded-md hover:bg-green-500 hover:text-white hover:border-green-500 transition-all duration-300 shadow-sm'
+                >
+                  Đã Hoàn Thành
+                </button>
+              )}
             </div>
           </div>
         ))}

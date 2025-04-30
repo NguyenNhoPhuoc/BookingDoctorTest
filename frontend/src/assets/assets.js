@@ -1,21 +1,18 @@
-import appointment_img from './appointment_img.png'
-import header_img from './header_img.png'
-import group_profiles from './group_profiles.png'
-import profile_pic from './profile_pic.png'
-import contact_image from './contact_image.png'
 import about_image from './about_image.png'
-import logo from './logo.svg'
-import dropdown_icon from './dropdown_icon.svg'
-import menu_icon from './menu_icon.svg'
-import cross_icon from './cross_icon.png'
-import chats_icon from './chats_icon.svg'
-import verified_icon from './verified_icon.svg'
+import appointment_img from './appointment_img.png'
 import arrow_icon from './arrow_icon.svg'
-import info_icon from './info_icon.svg'
-import upload_icon from './upload_icon.png'
-import stripe_logo from './stripe_logo.png'
-import razorpay_logo from './razorpay_logo.png'
+import bot_img from './botimg.png'
+import chats_icon from './chats_icon.svg'
+import xuongkhop from './co-xuong-khop.png'
+import contact_image from './contact_image.png'
+import cross_icon from './cross_icon.png'
 import doc1 from './doc1.png'
+import doc10 from './doc10.png'
+import doc11 from './doc11.png'
+import doc12 from './doc12.png'
+import doc13 from './doc13.png'
+import doc14 from './doc14.png'
+import doc15 from './doc15.png'
 import doc2 from './doc2.png'
 import doc3 from './doc3.png'
 import doc4 from './doc4.png'
@@ -24,20 +21,27 @@ import doc6 from './doc6.png'
 import doc7 from './doc7.png'
 import doc8 from './doc8.png'
 import doc9 from './doc9.png'
-import doc10 from './doc10.png'
-import doc11 from './doc11.png'
-import doc12 from './doc12.png'
-import doc13 from './doc13.png'
-import doc14 from './doc14.png'
-import doc15 from './doc15.png'
-import Dermatologist from './Dermatologist.svg'
-import Gastroenterologist from './Gastroenterologist.svg'
-import General_physician from './General_physician.svg'
-import Gynecologist from './Gynecologist.svg'
-import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
-
-
+import dropdown_icon from './dropdown_icon.svg'
+import group_profiles from './group_profiles.png'
+import header_img from './header_img.png'
+import hohap from './ho-hap-phoi.png'
+import info_icon from './info_icon.svg'
+import logo from './logo.png'
+import menu_icon from './menu_icon.svg'
+import noitiet from './noi-tiet.png'
+import profile_pic from './profile_pic.png'
+import razorpay_logo from './razorpay_logo.png'
+import stripe_logo from './stripe_logo.png'
+import thankinh from './than-kinh.png'
+import than from './than-tiet-nieu.png'
+import tieuhoa from './tieu-hoa.png'
+import timmach from './tim-mach.png'
+import tongquat from './tong-quat.png'
+import truyennhiem from './truyen-nhiem.png'
+import upload_icon from './upload_icon.png'
+import verified_icon from './verified_icon.svg'
+import voice_icon from './voice.png'
+import voice_icon_slash from './voice_red.png'
 export const assets = {
     appointment_img,
     header_img,
@@ -55,34 +59,50 @@ export const assets = {
     dropdown_icon,
     upload_icon,
     stripe_logo,
-    razorpay_logo
+    razorpay_logo,
+    voice_icon,
+    voice_icon_slash,
+    bot_img,
+    tongquat
 }
 
 export const specialityData = [
     {
-        speciality: 'General physician',
-        image: General_physician
+        speciality: 'Tim Mạch',
+        image: timmach
     },
     {
-        speciality: 'Gynecologist',
-        image: Gynecologist
+        speciality: 'Hô Hấp - Phổi',
+        image: hohap
     },
     {
-        speciality: 'Dermatologist',
-        image: Dermatologist
+        speciality: 'Tiêu Hóa',
+        image: tieuhoa
     },
     {
-        speciality: 'Pediatricians',
-        image: Pediatricians
+        speciality: 'Thần Kinh',
+        image: thankinh
     },
     {
-        speciality: 'Neurologist',
-        image: Neurologist
+        speciality: 'Cơ - Xương - Khớp',
+        image: xuongkhop
     },
     {
-        speciality: 'Gastroenterologist',
-        image: Gastroenterologist
+        speciality: 'Nội Tiết',
+        image: noitiet
     },
+    {
+        speciality: 'Truyền Nhiễm',
+        image: truyennhiem
+    },
+    {
+        speciality: 'Thận - Niệu',
+        image: than
+    },
+    {
+        speciality: 'Nội Tổng Quát',
+        image: tongquat
+    }
 ]
 
 export const doctors = [
