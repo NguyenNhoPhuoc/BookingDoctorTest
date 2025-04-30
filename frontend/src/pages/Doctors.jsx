@@ -32,6 +32,7 @@ const Doctors = () => {
           <p onClick={()=> speciality === 'Cơ - Xương - Khớp' ? navigate ('/doctors') : navigate('/doctors/Cơ - Xương - Khớp')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Cơ - Xương - Khớp" ? "bg-indigo-100 text-black" : "" }`}>Cơ - Xương - Khớp</p>
           <p onClick={()=> speciality === 'Nội Tiết' ? navigate ('/doctors') : navigate('/doctors/Nội Tiết')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Nội Tiết" ? "bg-indigo-100 text-black" : "" }`}>Nội Tiết</p>
           <p onClick={()=> speciality === 'Truyền Nhiễm' ? navigate ('/doctors') : navigate('/doctors/Truyền Nhiễm')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Truyền Nhiễm" ? "bg-indigo-100 text-black" : "" }`}>Truyền Nhiễm</p>
+          <p onClick={()=> speciality === 'Nội Tổng Quát' ? navigate ('/doctors') : navigate('/doctors/Nội Tổng Quát')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Nội Tổng Quát" ? "bg-indigo-100 text-black" : "" }`}>Nội Tổng Quát</p>
           <p onClick={()=> speciality === 'Thận - Niệu' ? navigate ('/doctors') : navigate('/doctors/Thận - Niệu')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer whitespace-nowrap ${speciality === "Thận - Niệu" ? "bg-indigo-100 text-black" : "" }`}>Thận - Niệu</p>
         </div>
         <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 gap-y-6'>
@@ -45,7 +46,7 @@ const Doctors = () => {
               <div className="p-4">
                 <div className="flex items-center gap-2 text-sm text-center text-green-500">
                   <p className="w-2 h-2 bg-green-500 rounded-full"></p>
-                  <p>Available</p>
+                  <p>{item.available ? 'Sẵn sàng' : 'Không sẵn sàng'}</p>
                 </div>
                 <p className="text-gray-900 text-lg font-medium">{item.name}</p>
                 <p className="text-gray-600 text-sm">{item.speciality}</p>

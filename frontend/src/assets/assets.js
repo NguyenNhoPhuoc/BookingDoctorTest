@@ -1,6 +1,7 @@
 import about_image from './about_image.png'
 import appointment_img from './appointment_img.png'
 import arrow_icon from './arrow_icon.svg'
+import bot_img from './botimg.png'
 import chats_icon from './chats_icon.svg'
 import xuongkhop from './co-xuong-khop.png'
 import contact_image from './contact_image.png'
@@ -25,7 +26,7 @@ import group_profiles from './group_profiles.png'
 import header_img from './header_img.png'
 import hohap from './ho-hap-phoi.png'
 import info_icon from './info_icon.svg'
-import logo from './logo.svg'
+import logo from './logo.png'
 import menu_icon from './menu_icon.svg'
 import noitiet from './noi-tiet.png'
 import profile_pic from './profile_pic.png'
@@ -35,10 +36,12 @@ import thankinh from './than-kinh.png'
 import than from './than-tiet-nieu.png'
 import tieuhoa from './tieu-hoa.png'
 import timmach from './tim-mach.png'
+import tongquat from './tong-quat.png'
 import truyennhiem from './truyen-nhiem.png'
 import upload_icon from './upload_icon.png'
 import verified_icon from './verified_icon.svg'
-
+import voice_icon from './voice.png'
+import voice_icon_slash from './voice_red.png'
 export const assets = {
     appointment_img,
     header_img,
@@ -56,7 +59,11 @@ export const assets = {
     dropdown_icon,
     upload_icon,
     stripe_logo,
-    razorpay_logo
+    razorpay_logo,
+    voice_icon,
+    voice_icon_slash,
+    bot_img,
+    tongquat
 }
 
 export const specialityData = [
@@ -92,6 +99,10 @@ export const specialityData = [
         speciality: 'Thận - Niệu',
         image: than
     },
+    {
+        speciality: 'Nội Tổng Quát',
+        image: tongquat
+    }
 ]
 
 export const doctors = [

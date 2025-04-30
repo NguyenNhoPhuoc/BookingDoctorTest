@@ -17,7 +17,7 @@ const Navbar = () => {
     }
     return (
         <div className='flex items-center justify-between text-[15px] py-4 mb-5 border-b border-b-gray-400 sticky top-0 bg-white z-50'>
-            <img onClick={() => navigate('/')} className='w-44 cursor-pointer hover:scale-105 transition-transform duration-300' src={assets.logo} alt="" />
+            <img onClick={() => navigate('/')} className='w-30 cursor-pointer hover:scale-105 transition-transform duration-300' src={assets.logo} alt="" />
             <ul className='hidden md:flex items-start gap-8 font-medium'>
                 <NavLink to='/' className='relative group'>
                     <li className='py-1 hover:text-primary transition-colors duration-300'>TRANG CHỦ</li>
@@ -33,6 +33,10 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink to='contact' className='relative group'>
                     <li className='py-1 hover:text-primary transition-colors duration-300'>LIÊN HỆ</li>
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
+                </NavLink>
+                <NavLink to='/chatbot' className='relative group'>
+                    <li className='py-1 hover:text-primary transition-colors duration-300'>CHATBOT</li>
                     <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full'></span>
                 </NavLink>
             </ul>
