@@ -9,7 +9,9 @@ const AdminContextProvider = (props) => {
     const [aToken,setAtoken] = useState(localStorage.getItem('aToken')?localStorage.getItem('aToken'):'');
     const [doctors,setdoctors] = useState([]);
     const [appointments,setAppointments] = useState([]);
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const backendUrl = import.meta.env.MODE === "development"
+    ? "http://localhost:4000"
+    : "https://bookingdoctortest.onrender.com";
 
     const getAllDoctors = async () => {
         try {
