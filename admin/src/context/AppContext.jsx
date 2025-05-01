@@ -4,7 +4,9 @@ export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
     const currency = '₫';
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = import.meta.env.MODE === "development"
+    ? "http://localhost:4000"
+    : "https://bookingdoctortest.onrender.com";
     const calculateAge = (dob) => {
         const today = new Date()
         const birthDate = new Date(dob);
