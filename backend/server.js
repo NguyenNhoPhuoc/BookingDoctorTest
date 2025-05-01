@@ -15,14 +15,8 @@ connectDB()
 // middlewares
 
 app.use(express.json())
-const corsOptions = {
-  origin: 'https://book-doctor-frontend.onrender.com', // Origin của frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Các phương thức HTTP được phép
-  allowedHeaders: ['Content-Type', 'Authorization'], // Các header được phép
-  credentials: true // Nếu cần gửi cookie hoặc thông tin xác thực
-};
+app.use(cors())
 
-app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 connectCloudinary()
 //api endpoint
