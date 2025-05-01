@@ -5,7 +5,9 @@ export const AppContext = createContext()
 const AppContextProvider = (props) => {
 
     const currencySymbol = 'đ' // VND
-    const backendURL = import.meta.env.VITE_BACKEND_URL
+    const backendURL=   import.meta.env.MODE === "development"
+    ? "http://localhost:4000"
+    : "https://bookingdoctortest.onrender.com";
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
     console.log(token);
