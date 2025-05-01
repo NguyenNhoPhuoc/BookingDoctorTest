@@ -5,7 +5,9 @@ export const DoctorContext = createContext();
 const DoctorContextProvider = (props) => {
     const [dToken, setDtoken] = useState(localStorage.getItem('dToken')?localStorage.getItem('dToken'):'');
     const [appointments,setAppointment] = useState([]);
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const backendUrl = import.meta.env.MODE === "development"
+    ? "http://localhost:4000"
+    : "https://bookingdoctortest.onrender.com";
     const [profileData,setProfileData] = useState(false);
 
     const getAppointments = async () => {
